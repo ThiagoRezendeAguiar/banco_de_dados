@@ -29,4 +29,13 @@ Especificar as seguintes consultas em álgebra relacional para recuperar os dado
    D ← B ⨝ actor_id = id_a ( C ) <br/>
    π name, first_name, last_name, role ( D )
 
-5.
+5. A ← director_id γ COUNT( movie_id ) → num_movies ( movies_directors ) <br/>
+   B ← A ⨝ director_id = id ( directors ) <br/>
+   π first_name, last_name, num_movies ( B )
+
+6. A ← genre γ COUNT(movie_id) → num_movies ( movies_genres) <br/>
+   π genre, num_movies (A)
+
+7. A ← movies ⨝ id = movie_id ( movies_genres ) <br/>
+   B ← genre γ AVG( rank ) → ranking_avg, MIN( rank ) → ranking_min, MAX( rank ) → ranking_max ( A ) <br/>
+   π genre, ranking_avg, ranking_min, ranking_max ( B )
